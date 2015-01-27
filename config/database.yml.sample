@@ -7,6 +7,7 @@ common: &common
   username: root
   password: 123456
 
+
 development:
   <<: *common
   database: mms_development
