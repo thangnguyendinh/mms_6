@@ -4,7 +4,19 @@
     <section class="user_info">
       <h1>
         <%= gravatar_for @user %>
-        <%= @user.name %>
+        <ul>
+  		  <li>name: <%= @user.name %></li>
+  		  <li>email: <%= @user.email %></li>
+  		  <li>birthday: <%= @user.birthday %></li>
+  		  <li>team: <%= @user.team.name %></li>
+  		  <li>position: <%= @user.position.name %></li>
+  		  <li>joined projects : <ul><% @user.team.projects.each do |project| %>
+  		  	<li><%= project.name %></li>
+  		  <% end %></ul></li>
+  		  <li>all skills : <ul><% @user.users_has_skills.each do |skill_user| %>
+  		  	<li><%= skill_user.skill.name %></li>
+  		  <% end %></ul></li>
+		</ul>
       </h1>
     </section>
   </aside>

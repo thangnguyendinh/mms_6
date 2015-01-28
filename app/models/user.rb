@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   belongs_to :position
   belongs_to :team
-  has_many :users_has_skill
+  has_many :users_has_skills
   attr_accessor :remember_token
   before_save { self.email = email.downcase }
   validates :name,  presence: true, length: { maximum: 50 }
