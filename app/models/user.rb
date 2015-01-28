@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   belongs_to :position
   belongs_to :team
-  has_many :users_has_skill
+  has_many :users_has_skills
   attr_accessor :remember_token
   before_save { self.email = email.downcase }
   validates :name,  presence: true, length: { maximum: 50 }
@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
   # Remembers a user in the database for use in persistent sessions.
   def remember
     self.remember_token = User.new_token
-    update_attribute(:remember_digest, User.digest(remember_token))
+    update_attributes(:remember_digest, User.digest(remember_token))
   end
 
   # Returns true if the given token matches the digest.
@@ -37,13 +37,13 @@ class User < ActiveRecord::Base
 
   # Forgets a user.
   def forget
-    update_attribute(:remember_digest, nil)
+    update_attributes(:remember_digest, nil)
   end
 
   def create_reset_digest
     self.reset_token = User.new_token
-    update_attribute(:reset_digest,  User.digest(reset_token))
-    update_attribute(:reset_sent_at, Time.zone.now)
+    update_attributes(:reset_digest,  User.digest(reset_token))
+    update_attributes(:reset_sent_at, Time.zone.now)
   end
    private
 
