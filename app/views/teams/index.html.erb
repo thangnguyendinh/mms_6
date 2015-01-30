@@ -1,0 +1,17 @@
+<% provide(:title, "all teams") %>
+<div id="member" class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <h1>all teams <h1>
+        <ul>
+          <% @teams.each do |team| %>
+            <li>
+              <%= link_to team.name, team_path(team),remote: true %>
+            </li>
+          <% end %>
+        </ul>
+        <%= will_paginate @teams, :param_name => 'team_page' %>
+    </section>
+  </aside>
+</div>
+<div id="team-users" class="modal hide fade"></div>

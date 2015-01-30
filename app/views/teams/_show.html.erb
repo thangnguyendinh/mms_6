@@ -1,0 +1,6 @@
+all users in team <%= @team.name %>
+<% @users.each do |user| %>
+  <li><%= link_to user.name, user_path(user),remote: true %></li>
+<% end %>
+<%= will_paginate @users, :param_name => 'user_page' %>
+<div id="user-profile" class="modal hide fade"></div>
